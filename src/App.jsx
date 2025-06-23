@@ -10,6 +10,7 @@ import WeightLossRateCard from "./pages/Results/WeightLossRateCard";
 import VisibleChangesTimelineCard from "./pages/Results/VisibleChangesTimelineCard";
 import Plan from "./pages/Plan";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { stepsNames } from "./utils/Constants";
 
 function App() {
   const [step, setStep] = useState(0);
@@ -51,7 +52,7 @@ function App() {
 
   const isInitial = step === 0;
   const isPlan = step === 7;
-
+  const isBodyFatInsightCard = step === 1;
   return (
     <div className="mx-auto container max-w-xl p-4">
       <Header />
@@ -64,18 +65,19 @@ function App() {
           </div>
         </div>
       )}
-
       {stepsComponents[step]}
 
       {!isInitial && !isPlan && (
         <div className="grid grid-cols-2 gap-5 mt-3 px-3">
           <button
-            className="px-4 py-2 flex justify-center items-center relative w-full bg-white border-2 border-label text-label rounded disabled:opacity-50"
+            className={`px-4 py-2 flex justify-center items-center relative w-full bg-white border-2 border-label text-label rounded disabled:opacity-50 ${
+              !isBodyFatInsightCard ? "visible" : "invisible"
+            }`}
             onClick={handlePrevious}
             disabled={step === 0}
           >
             <ArrowLeft className="absolute left-3" />
-            Previous
+            {step > 0 ? stepsNames[step - 1] : "Previous"}
           </button>
 
           <button

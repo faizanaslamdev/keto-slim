@@ -1,3 +1,13 @@
+export const stepsNames = [
+  "Initial Form",
+  "Body Fat %",
+  "BMI",
+  "Caloric Intake",
+  "Hydration",
+  "Weight Rate",
+  "Results",
+  "Plan",
+];
 export const bodyFatMessages = {
   fitness: {
     icon: "💪",
