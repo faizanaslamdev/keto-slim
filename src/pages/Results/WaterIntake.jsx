@@ -33,9 +33,10 @@ const WaterIntake = () => {
             }}
             className="inline-block"
           >
-            <Heading.H1.Highlight>8-9 Cups</Heading.H1.Highlight>
-          </motion.span>{" "}
-          of Water Daily
+            <Heading.H1.Highlight>8-9</Heading.H1.Highlight>
+          </motion.span>
+          <br />
+          Cups of Water Daily
         </Heading.H1>
       </motion.div>
 
