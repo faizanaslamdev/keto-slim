@@ -7,7 +7,8 @@ const WeightLossRateCard = ({ weightLossRate }) => {
     <Card>
       <Heading.H1 className="text-center">📉</Heading.H1>
       <Heading.H1 className="text-center">
-        You Could Be Losing{" "}
+        You Could Be Losing
+        <br />
         <Heading.H1.Highlight>{weightLossRate} lbs / Week</Heading.H1.Highlight>
       </Heading.H1>
 

@@ -7,7 +7,7 @@ const genderGroup = [
   { id: "female", label: "Female", img: "./female.jpg" },
 ];
 
-const GenderSelectorPage = ({ setSelectedGender, error }) => {
+const GenderSelectorPage = ({ setSelectedGender }) => {
   return (
     <Card>
       <Heading.H1 className="text-center">👤</Heading.H1>
@@ -19,7 +19,6 @@ const GenderSelectorPage = ({ setSelectedGender, error }) => {
           defaultValue="30-39"
           onChange={setSelectedGender}
         />
-        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
       </div>
     </Card>
   );

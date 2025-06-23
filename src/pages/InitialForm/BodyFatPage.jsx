@@ -11,7 +11,6 @@ const BodyFatPage = ({
   setSelectedFatValue,
   selectBMIValue,
   setSelectedBMIValue,
-  errors,
 }) => {
   let fatFeedback = null;
   if (selectedFatValue >= 5 && selectedFatValue <= 20) {
@@ -43,9 +42,6 @@ const BodyFatPage = ({
           {fatFeedback.message}
         </FeedbackMessage>
       )}
-      {errors.bodyFatPercent && (
-        <p className="text-red-500 text-sm">{errors.bodyFatPercent}</p>
-      )}
       <div className="flex justify-between mb-4 mt-2 items-center">
         <Label className="text-psm ">📊 Body Mass Index (BMI)</Label>
         <Paragraph.sm>{selectBMIValue}</Paragraph.sm>
@@ -64,7 +60,6 @@ const BodyFatPage = ({
           work out if your weight is healthy.
         </FeedbackMessage>
       )}
-      {errors.BMI && <p className="text-red-500 text-sm">{errors.BMI}</p>}
     </Card>
   );
 };

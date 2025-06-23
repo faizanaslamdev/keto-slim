@@ -24,7 +24,6 @@ const LifeStylePage = ({
   setSelectedWaterIntake,
   selectedResultDays,
   setSelectedResultDays,
-  errors,
 }) => {
   let feedback = null;
   if (["4", "6"].includes(selectedWaterIntake)) {
@@ -69,10 +68,6 @@ const LifeStylePage = ({
         </FeedbackMessage>
       )}
 
-      {errors.waterIntake && (
-        <p className="text-red-500 text-sm">{errors.waterIntake}</p>
-      )}
-
       <Label className="text-psm mb-4 mt-2">
         ⏰ When do you expect to see results?
       </Label>
@@ -80,7 +75,7 @@ const LifeStylePage = ({
         type="number"
         id="weight_loss"
         name="weight_loss"
-        placeholder="e.g., 30"
+        placeholder="e.g., 30 Days"
         min="7"
         max="365"
         value={selectedResultDays}
@@ -88,10 +83,6 @@ const LifeStylePage = ({
           setSelectedResultDays(e.target.value);
         }}
       />
-
-      {errors.seeResultsDays && (
-        <p className="text-red-500 text-sm">{errors.seeResultsDays}</p>
-      )}
     </Card>
   );
 };

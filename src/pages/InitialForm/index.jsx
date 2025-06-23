@@ -9,55 +9,33 @@ const steps = ["Gender", "BodyFat", "Goals", "Lifestyle"];
 
 const InitialForm = ({ setSteps, formData, setFormData }) => {
   const [stepForm, setStepForm] = useState(0);
-  const [errors, setErrors] = useState({});
 
-  const validateStep = useCallback(
+  const isStepValid = useCallback(
     (step) => {
-      const newErrors = {};
       switch (step) {
         case 0:
-          if (!formData.gender) newErrors.gender = "Please select your gender.";
-          break;
+          return !!formData.gender;
         case 1:
-          if (!formData.bodyFatPercent)
-            newErrors.bodyFatPercent = "Select body fat %.";
-          if (!formData.BMI) newErrors.BMI = "Enter BMI.";
-          break;
+          return !!(formData.bodyFatPercent && formData.BMI);
         case 2:
-          if (!formData.calorieTarget)
-            newErrors.calorieTarget = "Enter calorie target.";
-          if (!formData.weightLossRate)
-            newErrors.weightLossRate = "Enter weight loss rate.";
-          break;
+          return !!(formData.calorieTarget && formData.weightLossRate);
         case 3:
-          if (!formData.waterIntake)
-            newErrors.waterIntake = "Select water intake.";
-          if (!formData.seeResultsDays)
-            newErrors.seeResultsDays = "Enter result days.";
-          break;
+          return !!(formData.waterIntake && formData.seeResultsDays);
         default:
-          break;
+          return true;
       }
-      return Object.keys(newErrors).length ? newErrors : null;
     },
     [formData]
   );
 
   const handleNext = useCallback(() => {
-    const validationError = validateStep(stepForm);
-    if (validationError) {
-      setErrors(validationError);
-      return;
-    }
-    setErrors({});
     if (stepForm === steps.length - 1) {
       setSteps((prev) => prev + 1);
     }
     setStepForm((prev) => prev + 1);
-  }, [validateStep, stepForm, setSteps]);
+  }, [stepForm, setSteps]);
 
   const handlePrevious = useCallback(() => {
-    setErrors({});
     setStepForm((prev) => Math.max(0, prev - 1));
   }, []);
 
@@ -68,10 +46,8 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
           <GenderSelectorPage
             setSelectedGender={(value) => {
               setFormData((prev) => ({ ...prev, gender: value }));
-              setErrors({});
               setStepForm((prev) => prev + 1);
             }}
-            error={errors.gender}
           />
         );
       case 1:
@@ -80,14 +56,11 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
             selectedFatValue={formData.bodyFatPercent}
             setSelectedFatValue={(value) => {
               setFormData((prev) => ({ ...prev, bodyFatPercent: value }));
-              setErrors((prev) => ({ ...prev, bodyFatPercent: "" }));
             }}
             selectBMIValue={formData.BMI}
             setSelectedBMIValue={(value) => {
               setFormData((prev) => ({ ...prev, BMI: value }));
-              setErrors((prev) => ({ ...prev, BMI: "" }));
             }}
-            errors={errors}
           />
         );
       case 2:
@@ -96,14 +69,11 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
             selectedCaloriesValue={formData.calorieTarget}
             setSelectedCaloriesValue={(value) => {
               setFormData((prev) => ({ ...prev, calorieTarget: value }));
-              setErrors((prev) => ({ ...prev, calorieTarget: "" }));
             }}
             selectedWeightLogssGoal={formData.weightLossRate}
             setSelectedWeightLossGoal={(value) => {
               setFormData((prev) => ({ ...prev, weightLossRate: value }));
-              setErrors((prev) => ({ ...prev, weightLossRate: "" }));
             }}
-            errors={errors}
           />
         );
       case 3:
@@ -112,14 +82,11 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
             selectedWaterIntake={formData.waterIntake}
             setSelectedWaterIntake={(value) => {
               setFormData((prev) => ({ ...prev, waterIntake: value }));
-              setErrors((prev) => ({ ...prev, waterIntake: "" }));
             }}
             selectedResultDays={formData.seeResultsDays}
             setSelectedResultDays={(value) => {
               setFormData((prev) => ({ ...prev, seeResultsDays: value }));
-              setErrors((prev) => ({ ...prev, seeResultsDays: "" }));
             }}
-            errors={errors}
           />
         );
       default:
@@ -130,7 +97,7 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
   return (
     <>
       {renderCurrentStep()}
-      {!stepForm ? null : (
+      {stepForm === 0 ? null : (
         <div className="grid grid-cols-2 gap-5 mt-3 px-3">
           <button
             className="px-4 py-2 flex justify-center items-center relative w-full bg-white border-2 border-label text-label rounded-md disabled:opacity-50"
@@ -145,6 +112,7 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
             <button
               className="px-4 py-2 flex justify-center items-center relative w-full bg-label text-white rounded-md disabled:opacity-50"
               onClick={handleNext}
+              disabled={!isStepValid(stepForm)}
             >
               Next <ArrowRight className="absolute right-3 bottom-2.5" />
             </button>

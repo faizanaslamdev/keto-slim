@@ -10,7 +10,6 @@ const HealthGoalsPage = ({
   setSelectedCaloriesValue,
   selectedWeightLogssGoal,
   setSelectedWeightLossGoal,
-  errors,
 }) => {
   let feedback = null;
   const goal = parseFloat(selectedWeightLogssGoal);
@@ -33,14 +32,12 @@ const HealthGoalsPage = ({
         type="number"
         id="calories"
         name="calories"
+        placeholder="e.g., 1500 calories"
         value={selectedCaloriesValue}
         onChange={(e) => {
           setSelectedCaloriesValue(e.target.value);
         }}
       />
-      {errors.calorieTarget && (
-        <p className="text-red-500 text-sm">{errors.calorieTarget}</p>
-      )}
       <Label className="text-psm mb-4 mt-2">
         🎯 Weekly Weight Loss Goal (lbs)
       </Label>
@@ -48,6 +45,7 @@ const HealthGoalsPage = ({
         type="number"
         id="weight_loss"
         name="weight_loss"
+        placeholder="e.g., 2 lbs per week"
         value={selectedWeightLogssGoal}
         onChange={(e) => {
           setSelectedWeightLossGoal(e.target.value);
@@ -57,9 +55,6 @@ const HealthGoalsPage = ({
         <FeedbackMessage icon={feedback.icon} title={feedback.title}>
           {feedback.message}
         </FeedbackMessage>
-      )}
-      {errors.weightLossRate && (
-        <p className="text-red-500 text-sm">{errors.weightLossRate}</p>
       )}
     </Card>
   );
