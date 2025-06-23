@@ -31,14 +31,10 @@ export const SelectTrigger = ({
     <button
       type="button"
       onClick={() => setIsOpen(!isOpen)}
-      className={`w-full px-3 py-1 text-left bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent flex justify-between items-center text-[14px] ${className}`}
+      className={`w-full px-3 py-2 text-left bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:border-transparent flex justify-between items-center  ${className}`}
     >
       {children}
-      {isOpen ? (
-        <ChevronUp className="text-[14px]" />
-      ) : (
-        <ChevronDown className="text-[14px]" />
-      )}
+      {isOpen ? <ChevronUp /> : <ChevronDown />}
     </button>
   );
 };

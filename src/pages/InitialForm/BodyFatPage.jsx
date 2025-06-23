@@ -22,7 +22,7 @@ const BodyFatPage = ({
         value={selectedFatValue}
         onValueChange={setSelectedFatValue}
         max={100}
-        min={5}
+        min={0}
         step={1}
         className="w-full mb-4"
       />
@@ -37,7 +37,7 @@ const BodyFatPage = ({
         value={selectBMIValue}
         onValueChange={SetSelectedBMIValue}
         max={40.0}
-        min={15.0}
+        min={0.0}
         step={0.1}
         className="w-full mb-4"
       />

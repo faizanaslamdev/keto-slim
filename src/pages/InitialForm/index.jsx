@@ -67,6 +67,7 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
             setSelectedGender={(value) => {
               setFormData((prev) => ({ ...prev, gender: value }));
               setErrors({});
+              setStepForm((prev) => prev + 1);
             }}
             error={errors.gender}
           />
@@ -127,26 +128,27 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
   return (
     <>
       <Card>{renderCurrentStep()}</Card>
-
-      <div className="grid grid-cols-2 gap-5 mt-3 px-3">
-        <button
-          className="px-4 py-2 flex justify-center items-center relative w-full bg-white border-2 border-label text-label rounded disabled:opacity-50"
-          onClick={handlePrevious}
-          disabled={stepForm === 0}
-        >
-          <ArrowLeft className="absolute left-3" />
-          Previous
-        </button>
-
-        {stepForm < steps.length && (
+      {!stepForm ? null : (
+        <div className="grid grid-cols-2 gap-5 mt-3 px-3">
           <button
-            className="px-4 py-2 flex justify-center items-center relative w-full bg-label text-white rounded disabled:opacity-50"
-            onClick={handleNext}
+            className="px-4 py-2 flex justify-center items-center relative w-full bg-white border-2 border-label text-label rounded-md disabled:opacity-50"
+            onClick={handlePrevious}
+            disabled={stepForm === 0}
           >
-            Next <ArrowRight className="absolute right-3 bottom-2.5" />
+            <ArrowLeft className="absolute left-3" />
+            Previous
           </button>
-        )}
-      </div>
+
+          {stepForm < steps.length && (
+            <button
+              className="px-4 py-2 flex justify-center items-center relative w-full bg-label text-white rounded-md disabled:opacity-50"
+              onClick={handleNext}
+            >
+              Next <ArrowRight className="absolute right-3 bottom-2.5" />
+            </button>
+          )}
+        </div>
+      )}
     </>
   );
 };

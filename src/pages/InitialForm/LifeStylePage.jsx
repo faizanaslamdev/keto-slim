@@ -33,7 +33,7 @@ const LifeStylePage = ({
         value={selectedWaterIntake}
         onValueChange={setSelectedWaterIntake}
       >
-        <SelectTrigger className="text-xl h-14 border-2 focus:border-blue-400 mb-1">
+        <SelectTrigger className="mb-1">
           <SelectValue
             placeholder={
               selectedWaterIntake
