@@ -9,7 +9,7 @@ const Card = ({ children, className }) => {
         exit={{ opacity: 0, scale: 0.95, y: -10 }}
         transition={{
           duration: 0.3,
-          ease: [0.4, 0.0, 0.2, 1],
+          ease: [0.25, 0.46, 0.45, 0.94],
         }}
         key="box"
         className={`bg-background-card shadow-md rounded-2xl p-6 mb-6 w-full ${className}`}
