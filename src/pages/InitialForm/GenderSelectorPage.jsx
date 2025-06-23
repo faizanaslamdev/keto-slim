@@ -1,5 +1,6 @@
 import Heading from "../../components/Heading";
 import ImageRadioGroup from "../../components/ImageRadioSelector";
+import Card from "../../components/Card";
 
 const genderGroup = [
   { id: "male", label: "Male", img: "./male.jpg" },
@@ -8,7 +9,7 @@ const genderGroup = [
 
 const GenderSelectorPage = ({ setSelectedGender, error }) => {
   return (
-    <>
+    <Card>
       <Heading.H1 className="text-center">👤</Heading.H1>
       <Heading.H2 className="text-center">What's your gender?</Heading.H2>
       <div className="mt-4">
@@ -20,7 +21,7 @@ const GenderSelectorPage = ({ setSelectedGender, error }) => {
         />
         {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
       </div>
-    </>
+    </Card>
   );
 };
 

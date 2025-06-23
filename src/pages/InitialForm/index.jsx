@@ -1,10 +1,9 @@
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useCallback, useState } from "react";
-import GenderSelectorPage from "./GenderSelectorPage";
 import BodyFatPage from "./BodyFatPage";
+import GenderSelectorPage from "./GenderSelectorPage";
 import HealthGoalsPage from "./HealthGoalsPage";
 import LifeStylePage from "./LifeStylePage";
-import Card from "../../components/Card";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const steps = ["Gender", "BodyFat", "Goals", "Lifestyle"];
 
@@ -12,34 +11,37 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
   const [stepForm, setStepForm] = useState(0);
   const [errors, setErrors] = useState({});
 
-  const validateStep = (step) => {
-    const newErrors = {};
-    switch (step) {
-      case 0:
-        if (!formData.gender) newErrors.gender = "Please select your gender.";
-        break;
-      case 1:
-        if (!formData.bodyFatPercent)
-          newErrors.bodyFatPercent = "Select body fat %.";
-        if (!formData.BMI) newErrors.BMI = "Enter BMI.";
-        break;
-      case 2:
-        if (!formData.calorieTarget)
-          newErrors.calorieTarget = "Enter calorie target.";
-        if (!formData.weightLossRate)
-          newErrors.weightLossRate = "Enter weight loss rate.";
-        break;
-      case 3:
-        if (!formData.waterIntake)
-          newErrors.waterIntake = "Select water intake.";
-        if (!formData.seeResultsDays)
-          newErrors.seeResultsDays = "Enter result days.";
-        break;
-      default:
-        break;
-    }
-    return Object.keys(newErrors).length ? newErrors : null;
-  };
+  const validateStep = useCallback(
+    (step) => {
+      const newErrors = {};
+      switch (step) {
+        case 0:
+          if (!formData.gender) newErrors.gender = "Please select your gender.";
+          break;
+        case 1:
+          if (!formData.bodyFatPercent)
+            newErrors.bodyFatPercent = "Select body fat %.";
+          if (!formData.BMI) newErrors.BMI = "Enter BMI.";
+          break;
+        case 2:
+          if (!formData.calorieTarget)
+            newErrors.calorieTarget = "Enter calorie target.";
+          if (!formData.weightLossRate)
+            newErrors.weightLossRate = "Enter weight loss rate.";
+          break;
+        case 3:
+          if (!formData.waterIntake)
+            newErrors.waterIntake = "Select water intake.";
+          if (!formData.seeResultsDays)
+            newErrors.seeResultsDays = "Enter result days.";
+          break;
+        default:
+          break;
+      }
+      return Object.keys(newErrors).length ? newErrors : null;
+    },
+    [formData]
+  );
 
   const handleNext = useCallback(() => {
     const validationError = validateStep(stepForm);
@@ -52,7 +54,7 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
       setSteps((prev) => prev + 1);
     }
     setStepForm((prev) => prev + 1);
-  }, [stepForm, formData]);
+  }, [validateStep, stepForm, setSteps]);
 
   const handlePrevious = useCallback(() => {
     setErrors({});
@@ -81,7 +83,7 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
               setErrors((prev) => ({ ...prev, bodyFatPercent: "" }));
             }}
             selectBMIValue={formData.BMI}
-            SetSelectedBMIValue={(value) => {
+            setSelectedBMIValue={(value) => {
               setFormData((prev) => ({ ...prev, BMI: value }));
               setErrors((prev) => ({ ...prev, BMI: "" }));
             }}
@@ -127,7 +129,7 @@ const InitialForm = ({ setSteps, formData, setFormData }) => {
 
   return (
     <>
-      <Card>{renderCurrentStep()}</Card>
+      {renderCurrentStep()}
       {!stepForm ? null : (
         <div className="grid grid-cols-2 gap-5 mt-3 px-3">
           <button

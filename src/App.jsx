@@ -15,8 +15,8 @@ function App() {
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState({
     gender: "",
-    bodyFatPercent: 5,
-    BMI: 15.0,
+    bodyFatPercent: 28,
+    BMI: 25.0,
     calorieTarget: "",
     waterIntake: "",
     weightLossRate: "",
@@ -53,7 +53,7 @@ function App() {
   const isPlan = step === 7;
 
   return (
-    <div className="mx-auto container max-w-lg p-4">
+    <div className="mx-auto container max-w-xl p-4">
       <Header />
 
       {!isInitial && !isPlan && (

@@ -70,7 +70,7 @@ const Plan = () => {
       </Card>
       {showSticky && (
         <div className="fixed bottom-0 left-0 w-full bg-transparent p-3 shadow-md z-50">
-          <div className="max-w-lg mx-auto px-10 py-3">
+          <div className="max-w-xl mx-auto px-10 py-3">
             <button
               onClick={() =>
                 pricingRef.current?.scrollIntoView({ behavior: "smooth" })
