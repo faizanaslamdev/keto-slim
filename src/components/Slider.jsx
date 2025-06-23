@@ -1,14 +1,19 @@
 import { useRef } from "react";
 
-export function Slider({
+export const Slider = ({
   value,
   onValueChange,
   min = 0,
   max = 100,
   step = 1,
   className = "",
-}) {
+}) => {
   const sliderRef = useRef(null);
+
+  const getDecimalPlaces = (num) => {
+    if (Math.floor(num) === num) return 0;
+    return num.toString().split(".")[1]?.length || 0;
+  };
 
   const handleMouseDown = (e) => {
     const updateValue = (clientX) => {
@@ -22,7 +27,10 @@ export function Slider({
       const newValue = min + percentage * (max - min);
       const steppedValue = Math.round(newValue / step) * step;
 
-      onValueChange([Math.max(min, Math.min(max, steppedValue))]);
+      const decimalPlaces = getDecimalPlaces(step);
+      const finalValue = parseFloat(steppedValue.toFixed(decimalPlaces));
+
+      onValueChange([Math.max(min, Math.min(max, finalValue))]);
     };
 
     updateValue(e.clientX);
@@ -57,4 +65,4 @@ export function Slider({
       </div>
     </div>
   );
-}
+};

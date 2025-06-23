@@ -1,6 +1,6 @@
-const BaseParagraph = ({ children }) => {
+const BaseParagraph = ({ children,className }) => {
   return (
-    <p className="text-p font-[400] text-paragraph leading-paragraph">
+    <p className={`text-p font-[400] text-paragraph leading-paragraph ${className}`}>
       {children}
     </p>
   );

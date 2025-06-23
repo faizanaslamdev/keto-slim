@@ -1,12 +1,12 @@
 import { useState } from "react";
 
-export default function ImageRadioGroup({
+export const ImageRadioGroup = ({
   options,
   name,
   defaultValue,
   onChange,
   className = "",
-}) {
+}) => {
   const [selectedValue, setSelectedValue] = useState(
     defaultValue || options[0]?.id || ""
   );
@@ -71,4 +71,6 @@ export default function ImageRadioGroup({
       ))}
     </div>
   );
-}
+};
+
+export default ImageRadioGroup;
