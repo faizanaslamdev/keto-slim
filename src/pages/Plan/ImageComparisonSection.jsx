@@ -2,7 +2,7 @@ import Paragraph from "../../components/Paragraph";
 
 const ImageComparisonSection = () => (
   <>
-    <div className="grid grid-cols-2 gap-6">
+    <div className="grid grid-cols-2 gap-6 bg-[url(./double-chevron.png)] bg-contain bg-center bg-no-repeat">
       <img
         src="./obese-middle-aged-woman Medium Background Removed.webp"
         alt="Women"
