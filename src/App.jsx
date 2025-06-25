@@ -58,11 +58,9 @@ function App() {
       <Header />
 
       {!isInitial && !isPlan && (
-        <div className="grid grid-cols-2 gap-5 mt-3 px-3">
+        <div className="flex justify-between items-center mt-3 px-3">
           <p className="text-label">Your Results</p>
-          <div className="col-start-2">
-            <ProgressBar currentStep={step} totalSteps={7} />
-          </div>
+          <ProgressBar currentStep={step} totalSteps={7} />
         </div>
       )}
       {stepsComponents[step]}
