@@ -59,12 +59,11 @@ const Plan = () => {
         <ToolsAndKnowledge />
 
         <TrustedSources />
-
-        <Paragraph.sm className="text-center mt-4 mb-3">
-          3 Month Custom Keto Plan
-        </Paragraph.sm>
-        <CountdownTimer />
         <div ref={pricingRef}>
+          <Paragraph.sm className="text-center mt-4 mb-3">
+            3 Month Custom Keto Plan
+          </Paragraph.sm>
+          <CountdownTimer />
           <PricingOptions />
         </div>
       </Card>
