@@ -57,7 +57,7 @@ const WaterIntake = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5, duration: 0.6 }}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.02 }}
       />
 
       <motion.div

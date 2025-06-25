@@ -86,10 +86,10 @@ const BodyFatInsightCard = ({ bodyFatPercent, gender }) => {
         src="./body-fat.webp"
         alt="Body Fat Percentage"
         className="mx-auto mt-4"
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.6 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.5, duration: 0.6 }}
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.02 }}
       />
 
       <motion.div
