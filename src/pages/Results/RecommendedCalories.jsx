@@ -73,7 +73,7 @@ const RecommendedCalories = ({ calorieTarget }) => {
       </motion.div>
 
       <motion.img
-        src="./calories.png"
+        src="./calories.webp"
         alt="calories"
         className="mx-auto mt-4"
         initial={{ opacity: 0, scale: 0.9 }}

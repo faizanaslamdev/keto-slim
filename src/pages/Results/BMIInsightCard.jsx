@@ -70,7 +70,7 @@ const BMIInsightCard = ({ BMI }) => {
       </motion.div>
 
       <motion.img
-        src="./bmi-insight.png"
+        src="./bmi-insight.webp"
         alt="BMI Insight"
         className="mx-auto mt-4"
         initial={{ opacity: 0, scale: 0.9 }}

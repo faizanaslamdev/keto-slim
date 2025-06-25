@@ -52,7 +52,7 @@ const WeightLossRateCard = ({ weightLossRate }) => {
       </motion.div>
 
       <motion.img
-        src="./weight-loss.png"
+        src="./weight-loss.webp"
         alt="Weight Loss"
         className="mx-auto mt-4"
         initial={{ opacity: 0, scale: 0.9 }}

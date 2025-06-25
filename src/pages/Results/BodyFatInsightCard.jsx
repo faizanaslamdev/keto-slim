@@ -83,7 +83,7 @@ const BodyFatInsightCard = ({ bodyFatPercent, gender }) => {
       </motion.div>
 
       <motion.img
-        src="./body-fat.png"
+        src="./body-fat.webp"
         alt="Body Fat Percentage"
         className="mx-auto mt-4"
         initial={{ opacity: 0, scale: 0.9 }}

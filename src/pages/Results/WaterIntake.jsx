@@ -51,7 +51,7 @@ const WaterIntake = () => {
       </motion.div>
 
       <motion.img
-        src="./drinking-water.png"
+        src="./drinking-water.webp"
         alt="Water Intake"
         className="mx-auto mt-4"
         initial={{ opacity: 0, scale: 0.9 }}

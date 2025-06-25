@@ -40,7 +40,7 @@ const VisibleChangesTimelineCard = ({ seeResultsDays }) => {
       </motion.div>
 
       <motion.img
-        src="./timeline.png"
+        src="./timeline.webp"
         alt="timeline"
         className="mx-auto mt-4"
         initial={{ opacity: 0, scale: 0.9 }}
